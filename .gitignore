@@ -1,0 +1,30 @@
+# ── Secrets — NEVER commit ───────────────────────────────────────────────────
+.env
+.env.*
+!env.example
+
+# ── Python ───────────────────────────────────────────────────────────────────
+.venv/
+venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# ── OS / editor ──────────────────────────────────────────────────────────────
+.DS_Store
+.claude/
+
+# Internal planning artifacts (kept local, not part of the public demo).
+docs/superpowers/
+
+# ── Large, regenerable artifacts ─────────────────────────────────────────────
+# Rebuilt by build_data.py / build_graph.py; the live app renders the same thing.
+data/reducer.pkl
+embeddings.html
+graph.html
+
+# Committed on purpose (the bundled demo data — do NOT ignore):
+#   data/points.json, data/graph.json, data/qdrant_seed.json, lightrag_storage/

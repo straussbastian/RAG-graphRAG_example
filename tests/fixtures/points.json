@@ -1,0 +1,10 @@
+{
+  "collection": "LizardDocu",
+  "model": "mistral-embed",
+  "reductions": ["umap", "pca"],
+  "points": [
+    {"id": "a", "umap": [0.0, 0.0, 0.0], "pca": [0.0, 0.0, 0.0], "cluster": 0, "content": "alpha chunk", "loc": "1-10"},
+    {"id": "b", "umap": [10.0, 0.0, 0.0], "pca": [1.0, 0.0, 0.0], "cluster": 1, "content": "beta chunk", "loc": "11-20"},
+    {"id": "c", "umap": [0.0, 10.0, 0.0], "pca": [0.0, 1.0, 0.0], "cluster": 2, "content": "gamma chunk", "loc": "21-30"}
+  ]
+}

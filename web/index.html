@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RAG · Vektorraum</title>
+  <link rel="preload" as="font" type="font/woff2" href="/graph-static/fonts/ChakraPetch-700.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/graph-static/fonts/Sora-400.woff2" crossorigin />
+  <script src="/static/plotly.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="/static/style.css?v=3" />
+</head>
+<body>
+  <div id="plot"></div>
+  <div class="atmos vignette"></div>
+  <div class="atmos grain"></div>
+
+  <header class="hud-top">
+    <div class="brand">
+      <div class="glyph"><i></i><i></i><i></i><i></i></div>
+      <div class="titles">
+        <h1>Klassisches RAG</h1>
+        <div class="sub">Vektorraum</div>
+      </div>
+    </div>
+    <form id="queryForm" class="search">
+      <div class="field">
+        <input id="q" type="text" autocomplete="off"
+               placeholder="Suchtext eingeben… z. B. „Listenansicht“" />
+      </div>
+      <button type="submit">Suchen</button>
+      <button type="button" id="resetBtn" class="secondary">Reset</button>
+    </form>
+  </header>
+
+  <div class="hint" id="hint">249 Chunks als Embeddings — semantisch Ähnliches liegt nah beieinander</div>
+
+  <aside class="hud-panel">
+    <div class="panel-label">Nächste Nachbarn</div>
+    <div id="status">Bereit. Punktwolke geladen.</div>
+  </aside>
+
+  <script src="/static/app.js?v=3"></script>
+</body>
+</html>

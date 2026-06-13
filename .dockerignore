@@ -1,0 +1,22 @@
+# keep the build context lean and secrets out of the image
+.venv/
+.env
+.git/
+.gitignore
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.DS_Store
+docs/
+tests/
+*.md
+embeddings.html
+graph.html
+data/reducer.pkl
+.claude/
+lightrag_storage/
+docker-compose.yml
+export_vectors.py
+build_lightrag.py

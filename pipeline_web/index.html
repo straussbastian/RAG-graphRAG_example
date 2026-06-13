@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pipeline · Klassisches RAG live</title>
+  <link rel="preload" as="font" type="font/woff2" href="/graph-static/fonts/ChakraPetch-700.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/graph-static/fonts/Sora-400.woff2" crossorigin />
+  <link rel="stylesheet" href="/pipeline-static/style.css" />
+</head>
+<body>
+  <div class="atmos vignette"></div>
+
+  <header class="hud-top">
+    <div class="brand">
+      <div class="glyph"></div>
+      <div class="titles"><h1>Pipeline</h1><div class="sub">Klassisches RAG · Live</div></div>
+    </div>
+    <form id="qform" class="ask">
+      <input id="q" type="text" autocomplete="off"
+             placeholder="Frage stellen… z. B. „Welche Aufgabe hat ein Mitarbeiter?“" />
+      <button type="submit" id="start">Start</button>
+      <button type="button" id="reset">Reset</button>
+    </form>
+    <div class="stepper">
+      <button id="next" type="button" disabled>Weiter ⏎</button>
+      <div class="dots" id="dots"></div>
+    </div>
+    <div id="status">Frage eingeben → Start. Dann Klick / Leertaste für den nächsten Schritt.</div>
+  </header>
+
+  <main class="flow" id="flow">
+    <section class="row row-top" id="row-top">
+      <button class="rail" id="rail-top" type="button" title="Ein-/ausklappen — Taste 1" hidden>
+        <span class="chev">▾</span><span class="rail-label">Frage · Suche</span>
+      </button>
+      <div class="block" id="blk-q" hidden>
+        <div class="blk-label">1 · Frage</div>
+        <div class="q-text" id="qtext"></div>
+      </div>
+      <div class="arrow" id="ar1" hidden>➜</div>
+      <div class="block" id="blk-embed" hidden>
+        <div class="blk-label">2 · Embedding</div>
+        <canvas id="fp" width="352" height="352"></canvas>
+        <div class="blk-sub" id="dims"></div>
+      </div>
+      <div class="arrow" id="ar2" hidden>➜</div>
+      <div class="block grow" id="blk-search" hidden>
+        <div class="blk-label">3 · Vektorsuche <span class="db-chip" id="coll"></span></div>
+        <div class="chunks" id="chunks"></div>
+      </div>
+    </section>
+
+    <section class="row lane lane-classic" id="row-classic">
+      <button class="rail" id="rail-classic" type="button" title="Ein-/ausklappen — Taste 2" hidden>
+        <span class="chev">▾</span><span class="rail-label">Klassisch</span>
+      </button>
+      <div class="block prompt-block" id="blk-prompt" hidden>
+        <div class="blk-label">4 · Prompt — Chunks + Frage, zusammengeklebt</div>
+        <div class="prompt" id="prompt"></div>
+      </div>
+      <div class="arrow" id="ar3" hidden>➜</div>
+      <div class="block ans classic" id="blk-ans-classic" hidden>
+        <div class="blk-label">5 · Antwort · Klassisches RAG <span class="db-chip vio" id="amodel"></span></div>
+        <div class="ans-body" id="abody"></div>
+      </div>
+    </section>
+
+    <section class="row lane lane-graph" id="row-graph">
+      <button class="rail" id="rail-graph" type="button" title="Ein-/ausklappen — Taste 3" hidden>
+        <span class="chev">▾</span><span class="rail-label">GraphRAG</span>
+      </button>
+      <div class="block graphretr-block" id="blk-graphretr" hidden>
+        <div class="blk-label">6 · GraphRAG-Retrieval <span class="db-chip mint" id="gstats"></span></div>
+        <div class="gr-body" id="grbody"></div>
+      </div>
+      <div class="arrow" id="ar4" hidden>➜</div>
+      <div class="block ans graph" id="blk-ans-graph" hidden>
+        <div class="blk-label">7 · Antwort · GraphRAG <span class="db-chip mint" id="gmode"></span></div>
+        <div class="ans-body" id="gbody"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/pipeline-static/app.js"></script>
+</body>
+</html>

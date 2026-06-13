@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GraphRAG · Wissensgraph</title>
+  <link rel="preload" as="font" type="font/woff2" href="/graph-static/fonts/ChakraPetch-700.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/graph-static/fonts/Sora-400.woff2" crossorigin />
+  <script src="/graph-static/3d-force-graph.min.js"></script>
+  <link rel="stylesheet" href="/graph-static/style.css" />
+</head>
+<body>
+  <div id="graph"></div>
+  <div class="atmos vignette"></div>
+  <div class="atmos grain"></div>
+
+  <header class="hud-top">
+    <div class="brand">
+      <div class="glyph"></div>
+      <div class="titles">
+        <h1>GraphRAG</h1>
+        <div class="sub">Wissensgraph</div>
+      </div>
+    </div>
+    <form id="qform" class="search">
+      <div class="field">
+        <input id="q" type="text" autocomplete="off"
+               placeholder="Frage stellen… z. B. „Welche Aufgabe hat ein Mitarbeiter?“" />
+      </div>
+      <select id="mode" title="Retrieval-Modus">
+        <option value="mix">mix</option>
+        <option value="hybrid">hybrid</option>
+        <option value="local">local</option>
+        <option value="global">global</option>
+        <option value="naive">naive · ohne Graph</option>
+      </select>
+      <button type="submit">Suchen</button>
+      <button type="button" id="reset">Reset</button>
+    </form>
+  </header>
+
+  <div class="hint" id="hint">Stelle eine Frage — der traversierte Subgraph leuchtet auf</div>
+
+  <aside class="hud-panel">
+    <div class="panel-label">Retrieval</div>
+    <div id="status">Bereit. Graph geladen.</div>
+    <div id="keywords"></div>
+    <div class="legend-wrap">
+      <div class="panel-label">Entity-Typen · klicken zum Filtern</div>
+      <div id="legend"></div>
+    </div>
+  </aside>
+
+  <script src="/graph-static/app.js"></script>
+</body>
+</html>

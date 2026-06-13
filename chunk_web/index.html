@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chunking · Text → Chunks</title>
+  <link rel="preload" as="font" type="font/woff2" href="/graph-static/fonts/ChakraPetch-700.woff2" crossorigin />
+  <link rel="stylesheet" href="/chunk-static/style.css" />
+</head>
+<body>
+  <div class="atmos vignette"></div>
+
+  <header class="hud-top">
+    <div class="brand">
+      <div class="glyph"></div>
+      <div class="titles"><h1>Chunking</h1><div class="sub">Text → Chunks</div></div>
+    </div>
+    <div class="controls">
+      <label class="ctl"><span>Splitter</span>
+        <select id="splitter">
+          <option value="character">Character</option>
+          <option value="recursive" selected>Recursive</option>
+          <option value="markdown">Markdown</option>
+          <option value="sentence">Sentence</option>
+        </select>
+      </label>
+      <label class="ctl"><span>Chunk-Größe · <b id="sizeVal">400</b></span>
+        <input id="size" type="range" min="50" max="2000" step="10" value="400" />
+      </label>
+      <label class="ctl"><span>Overlap · <b id="ovlVal">40</b></span>
+        <input id="ovl" type="range" min="0" max="1000" step="5" value="40" />
+      </label>
+    </div>
+    <div id="stats"></div>
+  </header>
+
+  <main class="stage">
+    <section class="card">
+      <label class="card-label">Eingabetext · editierbar</label>
+      <textarea id="ta" placeholder="Text einfügen…"></textarea>
+    </section>
+    <section class="card">
+      <label class="card-label">Chunks · Farbe = ein Chunk, schraffiert = Overlap</label>
+      <div id="out" class="chunks"></div>
+    </section>
+  </main>
+
+  <script src="/chunk-static/chunkers.js"></script>
+  <script src="/chunk-static/app.js"></script>
+</body>
+</html>

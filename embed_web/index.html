@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Embedding · Live</title>
+  <link rel="preload" as="font" type="font/woff2" href="/graph-static/fonts/ChakraPetch-700.woff2" crossorigin />
+  <link rel="stylesheet" href="/embed-static/style.css" />
+</head>
+<body>
+  <div class="atmos vignette"></div>
+
+  <header class="hud-top">
+    <div class="brand">
+      <div class="glyph"></div>
+      <div class="titles"><h1>Embedding</h1><div class="sub">Vektorraum · Live</div></div>
+    </div>
+    <div class="modes">
+      <button data-mode="pair" class="active" type="button">Paar-Vergleich</button>
+      <button data-mode="game" type="button">Verbindungs-Spiel</button>
+    </div>
+    <div class="presets" id="presets"></div>
+    <div id="status">Zwei Texte eingeben → Vergleichen.</div>
+  </header>
+
+  <main id="pair-mode" class="stage">
+    <section class="card">
+      <label class="card-label">Text A</label>
+      <textarea id="ta" placeholder="z. B. „Der Mitarbeiter führt die Prüfung durch.“"></textarea>
+      <canvas id="ca" class="fingerprint" width="352" height="352"></canvas>
+      <div class="dim" id="dimA"></div>
+    </section>
+
+    <section class="mid">
+      <button id="cmp">Vergleichen</button>
+      <div class="cos-label">Cosine-Ähnlichkeit</div>
+      <div class="cos-value" id="cosval">—</div>
+      <div class="gauge">
+        <div class="gauge-track"><div class="gauge-mark" id="gmark"></div></div>
+        <div class="gauge-scale"><span>0.6</span><span>0.8</span><span>1.0</span></div>
+      </div>
+      <div class="cos-word" id="cosword"></div>
+
+      <div class="agree-wrap">
+        <div class="agree-label">Übereinstimmung je Dimension</div>
+        <canvas id="cc" class="agree" width="256" height="256"></canvas>
+        <div class="agree-hint">Σ (warm − kalt) = Ähnlichkeit</div>
+      </div>
+      <div class="cos-note">Embeddings starten selten unter ~0.6 — es zählt die <i>relative</i> Nähe.</div>
+    </section>
+
+    <section class="card">
+      <label class="card-label">Frage / Text B</label>
+      <textarea id="tb" placeholder="z. B. „Welche Aufgabe hat ein Angestellter?“"></textarea>
+      <canvas id="cb" class="fingerprint" width="352" height="352"></canvas>
+      <div class="dim" id="dimB"></div>
+    </section>
+  </main>
+
+  <main id="game-mode" class="game" hidden>
+    <div class="game-panel">
+      <div class="card-label">Finde Begriffe, die nichts miteinander zu tun haben</div>
+      <div class="game-inputs" id="ginputs"></div>
+      <div class="game-actions">
+        <button id="addterm" type="button">+ Begriff</button>
+        <button id="play" type="button">Verbinden</button>
+      </div>
+      <div class="matrix" id="matrix"></div>
+      <div class="game-note" id="gnote">Alles ist irgendwie verbunden — probier's aus.</div>
+    </div>
+  </main>
+
+  <script src="/embed-static/app.js"></script>
+</body>
+</html>
