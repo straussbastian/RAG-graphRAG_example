@@ -20,16 +20,61 @@ brauchst **nur einen Mistral-API-Key**. Qdrant (Vektor-DB) und LightRAG
 Externes wird kontaktiert. Mistral wird ausschließlich für Live-Embeddings und
 -Antworten genutzt (dein Key).
 
+### Schritt für Schritt (auch ohne Git-Erfahrung)
+
+**0. Voraussetzung:** [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+installieren und **starten** (das Wal-Symbol muss laufen). Mehr brauchst du nicht —
+kein Python, kein Node, nichts weiter.
+
+**1. Projekt herunterladen** — eine der beiden Varianten:
+
+- *Ohne Git (am einfachsten):* Auf der GitHub-Seite des Projekts oben rechts auf den
+  grünen Button **`Code`** → **`Download ZIP`**. Das ZIP entpacken und ein Terminal
+  **in diesem Ordner** öffnen.
+- *Mit Git:*
+  ```bash
+  git clone https://github.com/straussbastian/RAG-graphRAG_example.git
+  cd RAG-graphRAG_example
+  ```
+  _(Das Repo muss dafür öffentlich sein bzw. du brauchst Zugriff.)_
+
+**2. Mistral-API-Key holen:** auf <https://console.mistral.ai/> einloggen → *API Keys*
+→ *Create new key* → den Schlüssel kopieren (ein langer Buchstaben-/Zahlen-String).
+
+**3. Konfigurationsdatei `.env` anlegen** (kopiert die Vorlage):
 ```bash
-cp env.example .env        # dann .env öffnen und MISTRAL_API_KEY eintragen
-docker compose up          # startet qdrant + lightrag + die App
+cp env.example .env          # Windows (cmd):  copy env.example .env
 ```
 
-Dann **http://localhost:8888** öffnen. Optional sichtbar:
-- Qdrant-Dashboard: http://localhost:6333/dashboard
-- LightRAG-WebUI: http://localhost:9621
+**4. Key eintragen:** die neue Datei `.env` in einem Texteditor öffnen (z. B. VS Code,
+oder im Terminal `nano .env`). Dort steht die Zeile:
+```
+MISTRAL_API_KEY=
+```
+Schreibe deinen Key **direkt dahinter** — ohne Leerzeichen, ohne Anführungszeichen:
+```
+MISTRAL_API_KEY=dEinKopierterSchluessel
+```
+Speichern. Die Zeile `LOKAL=true` steht schon drin und bleibt so.
 
-Beim ersten Start seedet die App den lokalen Qdrant aus `data/qdrant_seed.json`;
+**5. Starten:**
+```bash
+docker compose up
+```
+Der **erste** Start lädt die Container herunter — das dauert ein paar Minuten (nur
+beim ersten Mal). Wenn in der Konsole `Application startup complete` erscheint, läuft
+alles.
+
+**6. Im Browser öffnen:** **http://localhost:8888** 🎉
+
+**Beenden:** im Terminal `Strg`+`C` drücken (optional danach `docker compose down`).
+Später wieder starten: einfach erneut `docker compose up` im selben Ordner — dann
+geht's sofort, ohne erneuten Download.
+
+> Optional sichtbar: Qdrant-Dashboard <http://localhost:6333/dashboard> ·
+> LightRAG-WebUI <http://localhost:9621>.
+
+Beim ersten Start befüllt die App den lokalen Qdrant aus `data/qdrant_seed.json`;
 der LightRAG-Wissensgraph ist in `lightrag_storage/` bereits vorgebaut (kein
 Ingest-Aufwand, keine Wartezeit).
 
