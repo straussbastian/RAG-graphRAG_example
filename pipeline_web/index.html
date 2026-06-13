@@ -7,6 +7,15 @@
   <link rel="preload" as="font" type="font/woff2" href="/graph-static/fonts/ChakraPetch-700.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/graph-static/fonts/Sora-400.woff2" crossorigin />
   <link rel="stylesheet" href="/pipeline-static/style.css" />
+  <style>
+    .examples { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; flex-basis: 100%; }
+    .examples .ex-label { font-family: 'Chakra Petch', monospace; font-size: 10px; letter-spacing: .22em;
+      text-transform: uppercase; color: #8b97b4; margin-right: 2px; }
+    .examples button { font-family: 'Chakra Petch', monospace; font-size: 11px; letter-spacing: .03em;
+      color: #eaf0ff; background: rgba(12,17,30,.7); border: 1px solid rgba(140,175,255,.18);
+      border-radius: 999px; padding: 6px 13px; cursor: pointer; transition: border-color .2s, color .2s, background .2s; }
+    .examples button:hover { border-color: #e879f9; color: #fff; background: rgba(232,121,249,.14); }
+  </style>
 </head>
 <body>
   <div class="atmos vignette"></div>
@@ -27,6 +36,7 @@
       <div class="dots" id="dots"></div>
     </div>
     <div id="status">Frage eingeben → Start. Dann Klick / Leertaste für den nächsten Schritt.</div>
+    <div class="examples" id="examples"><span class="ex-label">Beispiele</span></div>
   </header>
 
   <main class="flow" id="flow">

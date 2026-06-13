@@ -138,14 +138,14 @@ iframe{flex:1;border:0;width:100%;background:#04050a}
 <div class="bar">
   <div class="title">RAG &times; GraphRAG</div>
   <div class="seg">
-    <button id="b-chunk" onclick="show('/chunk','b-chunk')">Chunking</button>
+    <button id="b-chunk" class="active" onclick="show('/chunk','b-chunk')">Chunking</button>
     <button id="b-embed" onclick="show('/embed','b-embed')">Embedding</button>
     <button id="b-rag" onclick="show('/qdrant','b-rag')">Klassisches RAG</button>
-    <button id="b-graph" class="active" onclick="show('/graph','b-graph')">GraphRAG</button>
+    <button id="b-graph" onclick="show('/graph','b-graph')">GraphRAG</button>
     <button id="b-pipe" onclick="show('/pipeline','b-pipe')">Pipeline</button>
   </div>
 </div>
-<iframe id="view" src="/graph" title="Ansicht"></iframe>
+<iframe id="view" src="/chunk" title="Ansicht"></iframe>
 <script>
 function show(u,id){document.getElementById('view').src=u;
   document.querySelectorAll('.seg button').forEach(function(b){b.classList.remove('active');});

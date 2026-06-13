@@ -240,6 +240,25 @@ async function init() {
   pulse();
 }
 
+/* clickable example questions — graph-flavoured (entities + relations) */
+const EXAMPLES = [
+  "Wie hängen Prüfauftrag und Betriebsmittel zusammen?",
+  "Welche Aufgabe hat ein Prüfer?",
+  "Was passiert bei der Prüfung eines Feuerlöschers?",
+  "Wie funktioniert die Zeiterfassung?",
+  "Welche Rollen gibt es im System?",
+];
+const exWrap = document.getElementById("examples");
+if (exWrap) EXAMPLES.forEach((q) => {
+  const b = document.createElement("button");
+  b.type = "button"; b.textContent = q;
+  b.addEventListener("click", () => {
+    document.getElementById("q").value = q;
+    document.getElementById("qform").requestSubmit();
+  });
+  exWrap.appendChild(b);
+});
+
 document.getElementById("qform").addEventListener("submit", async (e) => {
   e.preventDefault();
   const q = document.getElementById("q").value.trim();

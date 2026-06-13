@@ -153,6 +153,25 @@ function render(queryPoint, neighbors) {
   Plotly.react(plotDiv, [bgTrace, nbHalo, lines, nbTrace, qHalo, qtrace], layout, CONFIG);
 }
 
+/* clickable example queries — so the audience sees what to ask */
+const EXAMPLES = [
+  "Wie funktioniert die Zeiterfassung?",
+  "Was ist ein Prüfauftrag?",
+  "Welche Rollen gibt es?",
+  "Wie lege ich ein Betriebsmittel an?",
+  "Listenansicht",
+];
+const exWrap = document.getElementById("examples");
+if (exWrap) EXAMPLES.forEach((q) => {
+  const b = document.createElement("button");
+  b.type = "button"; b.textContent = q;
+  b.addEventListener("click", () => {
+    document.getElementById("q").value = q;
+    document.getElementById("queryForm").requestSubmit();
+  });
+  exWrap.appendChild(b);
+});
+
 document.getElementById("resetBtn").addEventListener("click", resetView);
 
 document.getElementById("queryForm").addEventListener("submit", async (e) => {

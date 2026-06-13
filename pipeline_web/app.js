@@ -262,6 +262,21 @@ async function start(q) {
     .catch((e) => { S.errors.answer = `${e.message}`; renderAll(); });
 }
 
+/* clickable example questions — fill the field and start the pipeline */
+const EXAMPLES = [
+  "Was ist ein Prüfauftrag?",
+  "Wie funktioniert die Zeiterfassung?",
+  "Welche Aufgabe hat ein Prüfer?",
+  "Wie prüfe ich einen Feuerlöscher?",
+];
+const exWrap = $("examples");
+if (exWrap) EXAMPLES.forEach((q) => {
+  const b = document.createElement("button");
+  b.type = "button"; b.textContent = q;
+  b.addEventListener("click", () => { $("q").value = q; $("qform").requestSubmit(); });
+  exWrap.appendChild(b);
+});
+
 /* ── wiring ── */
 $("qform").addEventListener("submit", (e) => {
   e.preventDefault();

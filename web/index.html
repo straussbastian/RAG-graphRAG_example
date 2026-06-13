@@ -8,6 +8,17 @@
   <link rel="preload" as="font" type="font/woff2" href="/graph-static/fonts/Sora-400.woff2" crossorigin />
   <script src="/static/plotly.min.js" charset="utf-8"></script>
   <link rel="stylesheet" href="/static/style.css?v=3" />
+  <style>
+    .examples { position: fixed; top: 110px; left: 0; right: 0; z-index: 6;
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; padding: 0 16px; pointer-events: none; }
+    .examples .ex-label { pointer-events: none; align-self: center; font-family: 'Chakra Petch', monospace;
+      font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: #8b97b4; margin-right: 2px; }
+    .examples button { pointer-events: auto; font-family: 'Chakra Petch', monospace; font-size: 11px;
+      letter-spacing: .03em; color: #eaf0ff; background: rgba(12,17,30,.7); border: 1px solid rgba(140,175,255,.18);
+      border-radius: 999px; padding: 6px 13px; cursor: pointer; backdrop-filter: blur(6px);
+      transition: border-color .2s, color .2s, background .2s; }
+    .examples button:hover { border-color: #a78bfa; color: #fff; background: rgba(167,139,250,.14); }
+  </style>
 </head>
 <body>
   <div id="plot"></div>
@@ -33,6 +44,8 @@
   </header>
 
   <div class="hint" id="hint">249 Chunks als Embeddings — semantisch Ähnliches liegt nah beieinander</div>
+
+  <div class="examples" id="examples"><span class="ex-label">Beispiele</span></div>
 
   <aside class="hud-panel">
     <div class="panel-label">Nächste Nachbarn</div>

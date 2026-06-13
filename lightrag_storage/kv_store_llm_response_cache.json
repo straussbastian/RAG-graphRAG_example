@@ -1911,5 +1911,110 @@
     "create_time": 1781356441,
     "update_time": 1781356441,
     "_id": "mix:query:d226add86489375908f008617a2931b3"
+  },
+  "mix:keywords:943cfa341b0bf0a439237b383bed4722": {
+    "return": "{\"high_level_keywords\": [\"employee role\", \"job responsibilities\", \"work duties\"], \"low_level_keywords\": [\"Mitarbeiter\"]}",
+    "cache_type": "keywords",
+    "chunk_id": null,
+    "original_prompt": "Was macht ein Mitarbeiter",
+    "queryparam": {
+      "mode": "mix",
+      "response_type": "Multiple Paragraphs",
+      "top_k": 8,
+      "chunk_top_k": 20,
+      "max_entity_tokens": 6000,
+      "max_relation_tokens": 8000,
+      "max_total_tokens": 30000,
+      "user_prompt": "",
+      "enable_rerank": true
+    },
+    "update_time": 1781356892,
+    "_id": "mix:keywords:943cfa341b0bf0a439237b383bed4722"
+  },
+  "mix:query:567e2796d04c166753a4ecd6823540d0": {
+    "return": "Ein **Mitarbeiter** (engl. *Employee*) ist eine zentrale Rolle im **Lizard**-System und übernimmt vielfältige Aufgaben im Rahmen der Verwaltung, Inspektion und Zusammenarbeit. Hier sind die wichtigsten Funktionen und Verantwortlichkeiten eines Mitarbeiters:\n\n---\n\n### **1. Systemzugriff und Rollenverwaltung**\n- **Benutzerkonto:** Ein Mitarbeiter wird als **Benutzerkonto** im System angelegt, das Zugang zu Lizard und seinen Modulen (z. B. *Zeiterfassung*, *Prüfaufträge*, *Partnerlizenzverwaltung*) ermöglicht.\n- **Rollen und Rechte:** Mitarbeiter erhalten spezifische **Rollen** (z. B. *Techniker*, *Büro-Mitarbeiter*, *Administrator*, *Prüfer*), die ihre Berechtigungen definieren. Diese Rollen steuern, welche Aktionen sie ausführen dürfen, wie z. B.:\n  - **Techniker:** Durchführung von Inspektionen, Dokumentation von Prüfergebnissen, Nutzung der mobilen App.\n  - **Büro-Mitarbeiter:** Verwaltung von Prüfaufträgen, Bearbeitung von Stammdaten, Erstellung von Berichten.\n  - **Administrator:** Systemkonfiguration, Benutzerverwaltung, Lizenzmanagement.\n  - **Prüfer:** Qualitätskontrolle, Freigabe von Betriebsmitteln, Überwachung von Compliance.\n- **2FA (Zwei-Faktor-Authentifizierung):** Mitarbeiter können zur Sicherheit verpflichtet werden, die **2FA** zu aktivieren, um den Account zu schützen.\n\n---\n\n### **2. Verwaltung von Betriebsmitteln**\n- **Verantwortung für Betriebsmittel:** Mitarbeiter können als **Verantwortliche** für bestimmte *Betriebsmittel* (z. B. Maschinen, Werkzeuge, Fahrzeuge) eingetragen werden. Sie sind dann für die:\n  - **Inspektion und Wartung** der Betriebsmittel zuständig.\n  - **Dokumentation** von Prüfergebnissen und Statusänderungen (z. B. \"Betriebsbereit\" oder \"Gesperrt\").\n  - **Zuweisung von Prüfaufträgen** an sich selbst oder an Kollegen.\n- **Qualifikationen:** Mitarbeiter müssen über die **notwendigen Qualifikationen** verfügen, um bestimmte Prüfungen durchzuführen. Das System prüft automatisch, ob die Qualifikation noch gültig ist, und warnt bei Ablauf oder Fehlen.\n\n---\n### **3. Zeiterfassung und Arbeitszeitmanagement**\n- **Zeiterfassung:** Mitarbeiter dokumentieren ihre **Arbeitszeit** für Prüfaufträge oder andere Aufgaben über das **Zeiterfassungssystem**. Dies umfasst:\n  - Starten und Stoppen der Zeiterfassung für einen Auftrag.\n  - Manuelle Anpassung der Arbeitszeit (z. B. bei Pausen).\n  - Integration der Arbeitszeit in Prüfberichte für Kunden.\n- **Kostenabrechnung:** Die erfassten Zeiten werden für die **Kundenabrechnung** und interne Auswertungen genutzt.\n\n---\n### **4. Zusammenarbeit mit Partnern**\n- **Externer Zugriff:** Mitarbeiter von **Serviceunternehmen** oder Partnern können temporären Zugang zum System erhalten, um:\n  - Prüfungen durchzuführen.\n  - Prüfergebnisse zu dokumentieren.\n  - Betriebsmittel zu verwalten (z. B. Seriennummern aktualisieren).\n- **Freigabe von Betriebsmitteln:** Mitarbeiter können Betriebsmittel mit Partnern teilen, sodass diese direkt in den Prüfprozess eingebunden werden. Die Freigabe erfolgt über die **Zusammenarbeit**-Funktion, wobei der Partner nur eingeschränkten Zugriff auf die freigegebenen Betriebsmittel hat.\n\n---\n### **5. Lizenzmanagement**\n- **Mitarbeiter-Lizenzen:** Mitarbeiter benötigen eine **Lizenz**, um auf bestimmte Funktionen oder Module zugreifen zu können. Es gibt verschiedene Lizenzarten:\n  - **Büro-Mitarbeiter-Lizenz:** Für administrative Aufgaben.\n  - **Service-Mitarbeiter-Lizenz:** Für Techniker und Prüfer.\n  - **Partnerlizenzen:** Für externe Mitarbeiter von Serviceunternehmen.\n- **Lizenzverwaltung:** Administratoren können Lizenzen zuweisen, entfernen oder deren Gültigkeit verwalten.\n\n---\n### **6. Qualifikationen und Zertifikate**\n- **Verwaltung von Qualifikationen:** Mitarbeiter können Qualifikationen (z. B. Zertifikate für spezifische Prüfungen) im System hinterlegen. Diese Qualifikationen sind mit:\n  - **Prüfkategorien** (z. B. DGUV V3, BetrSichV) verknüpft.\n  - **Betriebsmitteln** verbunden, die geprüft werden dürfen.\n- **Automatische Warnungen:** Das System erinnert an Ablaufdaten von Qualifikationen und dokumentiert im Prüfbericht, ob der Prüfer zum Zeitpunkt der Prüfung qualifiziert war.\n\n---\n### **7. Dokumentation und Compliance**\n- **Prüfergebnisse:** Mitarbeiter dokumentieren Prüfergebnisse, einschließlich:\n  - Fotos von Mängeln oder Betriebszuständen.\n  - Messwerte und Kommentare.\n  - Unterschriften von Kunden oder Prüfern.\n- **Compliance:** Mitarbeiter stellen sicher, dass Prüfungen und Wartungen den gesetzlichen Vorgaben (z. B. BetrSichV, DGUV) entsprechen. Das System unterstützt dies durch:\n  - Automatische Zuweisung von Prüfvorlagen.\n  - Dokumentation der Normen und Richtlinien, die bei der Prüfung angewendet wurden.\n\n---\n### **8. Nutzung der Lizard-App**\n- **Mobile Prüfung:** Techniker nutzen die **Lizard Connect App**, um:\n  - Prüfaufträge zu bearbeiten.\n  - Betriebsmittel vor Ort zu scannen (z. B. über QR-Codes oder NFC-Tags).\n  - Prüfergebnisse direkt in der App zu erfassen und zu speichern.\n- **Offline-Funktionalität:** Die App ermöglicht die Arbeit auch ohne Internetverbindung, wobei Änderungen später synchronisiert werden.\n\n---\n### **9. Sicherheit und Datenschutz**\n- **Audit-Trail:** Alle Änderungen, die ein Mitarbeiter im System vornimmt, werden protokolliert. Dies umfasst:\n  - Wer hat eine Änderung vorgenommen?\n  - Wann wurde die Änderung durchgeführt?\n  - Welche Daten wurden geändert?\n- **Datenhoheit:** Mitarbeiter haben nur Zugriff auf die Daten, für die sie berechtigt sind. Externe Partner sehen z. B. nur die Betriebsmittel, die ihnen freigegeben wurden.\n\n---\n### **10. Integration in Arbeitsabläufe**\n- **Prüfaufträge:** Mitarbeiter werden Prüfaufträgen zugewiesen und führen diese durch. Der Auftrag enthält alle relevanten Informationen, wie:\n  - Zu prüfende Betriebsmittel.\n  - Prüfvorlagen und Checklisten.\n  - Geplante Durchführungszeiten.\n- **Kollaboration:** Mitarbeiter arbeiten mit Kollegen, Partnern oder Kunden zusammen, um Prüfungen zu koordinieren und Ergebnisse auszutauschen.\n\n---\n### **Zusammenfassung der wichtigsten Tools und Module für Mitarbeiter**\n| Rolle | Wichtige Tools/Module | Aufgaben |\n|-------|-----------------------|----------|\n| **Techniker** | Zeiterfassung, Lizard Connect App, Prüfaufträge | Durchführung von Inspektionen, Dokumentation von Prüfergebnissen |\n| **Büro-Mitarbeiter** | Benutzerverwaltung, Stammdatenfilter, Berichte | Verwaltung von Prüfaufträgen, Erstellung von Berichten, Lizenzmanagement |\n| **Administrator** | Rollen-Bearbeitung, Partnerlizenzverwaltung, API-Tokens | Systemkonfiguration, Benutzerverwaltung, Sicherheitsmanagement |\n| **Prüfer** | Prüfvorlagen, Qualifikationen, Compliance | Qualitätskontrolle, Freigabe von Betriebsmitteln, Überwachung von Normen |\n\n---\n### References\n\n- [1] LizardDocu.md",
+    "cache_type": "query",
+    "chunk_id": null,
+    "original_prompt": "Was macht ein Mitarbeiter",
+    "queryparam": {
+      "mode": "mix",
+      "response_type": "Multiple Paragraphs",
+      "top_k": 40,
+      "chunk_top_k": 20,
+      "max_entity_tokens": 6000,
+      "max_relation_tokens": 8000,
+      "max_total_tokens": 30000,
+      "hl_keywords": "employee role, job responsibilities",
+      "ll_keywords": "Mitarbeiter",
+      "user_prompt": "",
+      "enable_rerank": true,
+      "enable_content_headings": true
+    },
+    "create_time": 1781356904,
+    "update_time": 1781356904,
+    "_id": "mix:query:567e2796d04c166753a4ecd6823540d0"
+  },
+  "mix:keywords:9477d1b2b067a964f9d2c725e773d29c": {
+    "return": "{\"high_level_keywords\": [\"role\", \"responsibilities\", \"job duties\"], \"low_level_keywords\": [\"Pr\\u00fcfer\", \"Aufgabe\"]}",
+    "cache_type": "keywords",
+    "chunk_id": null,
+    "original_prompt": "Welche Aufgabe hat ein Prüfer?",
+    "queryparam": {
+      "mode": "mix",
+      "response_type": "Multiple Paragraphs",
+      "top_k": 8,
+      "chunk_top_k": 20,
+      "max_entity_tokens": 6000,
+      "max_relation_tokens": 8000,
+      "max_total_tokens": 30000,
+      "user_prompt": "",
+      "enable_rerank": true
+    },
+    "create_time": 1781357564,
+    "update_time": 1781357564,
+    "_id": "mix:keywords:9477d1b2b067a964f9d2c725e773d29c"
+  },
+  "mix:keywords:a20663ce9ebec59d90e2c434a3ccfb2c": {
+    "return": "{\"high_level_keywords\": [\"roles\", \"system roles\", \"user roles\"], \"low_level_keywords\": []}",
+    "cache_type": "keywords",
+    "chunk_id": null,
+    "original_prompt": "Welche Rollen gibt es im System?",
+    "queryparam": {
+      "mode": "mix",
+      "response_type": "Multiple Paragraphs",
+      "top_k": 8,
+      "chunk_top_k": 20,
+      "max_entity_tokens": 6000,
+      "max_relation_tokens": 8000,
+      "max_total_tokens": 30000,
+      "user_prompt": "",
+      "enable_rerank": true
+    },
+    "create_time": 1781357568,
+    "update_time": 1781357568,
+    "_id": "mix:keywords:a20663ce9ebec59d90e2c434a3ccfb2c"
+  },
+  "mix:query:c46dfaf90a45f3640fe261a5d6cbefa2": {
+    "return": "Im **Lizard-System** gibt es verschiedene **Benutzerrollen**, die unterschiedliche Berechtigungen und Zugriffsrechte definieren. Diese Rollen passen sich den Anforderungen der Benutzer an und steuern, welche Funktionen und Daten sie nutzen können.\n\n---\n\n### **Standard-Rollen im Lizard-System**\n\nDie folgenden **Standard-Rollen** sind typischerweise in Lizard vordefiniert und decken die meisten Anwendungsfälle ab:\n\n<CardGroup cols={2}>\n  <Card title=\"Administrator\" icon=\"shield-check\">\n    **Vollzugriff auf alle Einstellungen, Lizenzen und Daten.**\n    - Kann Systemeinstellungen ändern.\n    - Verwaltet Benutzer, Rollen und Berechtigungen.\n    - Hat Zugriff auf die **Partnerlizenzverwaltung** (Standardmäßig nur Administratoren).\n    - Kann Partner-Lizenzen erstellen, bearbeiten und verwalten.\n    - Verantwortlich für die Einhaltung von Richtlinien wie 2FA (Zwei-Faktor-Authentifizierung).\n  </Card>\n  <Card title=\"Manager / Disponent\" icon=\"user-tie\">\n    **Verantwortlich für Planung und Ressourcenmanagement.**\n    - Kann Prüfaufträge erstellen, bearbeiten und Ressourcen planen.\n    - Darf Berichte einsehen, aber **keine Systemeinstellungen ändern**.\n    - Hat keine administrativen Rechte.\n  </Card>\n  <Card title=\"Techniker\" icon=\"user-helmet-safety\">\n    **Fokus auf die Durchführung von Prüfungen und Wartungsarbeiten.**\n    - Sieht zugewiesene Aufträge in einer **Nur-Lese-Ansicht**.\n    - Dokumentiert Mängel und führt Prüfungen durch.\n    - Kann Betriebsmittelattribute bearbeiten, die für die Prüfung relevant sind.\n  </Card>\n  <Card title=\"Zuschauer (Viewer)\" icon=\"eye\">\n    **Lesender Zugriff auf Daten.**\n    - Darf Daten nur einsehen, z. B. für Controlling oder Kunden.\n    - Hat **keine Bearbeitungsrechte**.\n  </Card>\n</CardGroup>\n\n---\n\n### **Erweiterte Rollen und Spezialisierungen**\n\nNeben den Standard-Rollen gibt es weitere Rollen, die spezifische Funktionen abdecken:\n\n- **Büro-Mitarbeiter / Admins**:\n  - Können Termine im **Einsatzplaner** verschieben, neu anlegen und bearbeiten.\n  - Haben administrative Rechte, die sich auf Büro- und Organisationsaufgaben konzentrieren.\n\n- **Service-Mitarbeiter**:\n  - Typischerweise mit spezifischen Berechtigungen für Service- oder Inspektionsaufgaben.\n  - Kann in Kombination mit anderen Rollen wie **Techniker** oder **Manager** auftreten.\n\n- **Externe Rollen (z. B. Auditoren oder Subunternehmer)**:\n  - Können temporären Zugriff erhalten, z. B. über das Feld **\"Externer Zugriff bis\"**.\n  - Der Zugriff wird nach Ablauf der festgelegten Zeit automatisch deaktiviert.\n\n---\n### **Benutzerdefinierte Rollen**\n\nDas System ermöglicht es, **benutzerdefinierte Rollen** zu erstellen und diese mit spezifischen Berechtigungen auszustatten. Dies ist besonders nützlich, wenn Standardrollen nicht ausreichen oder spezielle Zugriffsrechte benötigt werden.\n\n<Steps>\n  <Step title=\"Rolle anlegen\">\n    Navigiere zu **Einstellungen > Rollen** und klicke auf **\"Erstellen\"**.\n  </Step>\n  <Step title=\"Namen und Berechtigungen festlegen\">\n    Gib einen eindeutigen Namen für die Rolle ein und wähle die gewünschten Berechtigungen aus.\n  </Step>\n  <Step title=\"Speichern und zuweisen\">\n    Nach dem Speichern kann die Rolle Benutzern zugewiesen werden.\n  </Step>\n</Steps>\n\n---\n### **Rollenbasierte Ansichten im Einsatzplaner**\nDer **Einsatzplaner** passt sich dynamisch an die Benutzerrolle an:\n- **Büro-Mitarbeiter/Admins**: Können Termine bearbeiten und neue Termine anlegen.\n- **Techniker/Prüfer**: Sehen ihre Termine in einer **Nur-Lese-Ansicht** zur Information.\n\n---\n### **Zusammenfassung der Rollen und ihrer Hauptaufgaben**\n| Rolle | Hauptaufgaben | Berechtigungen |\n|-------|---------------|----------------|\n| **Administrator** | Systemverwaltung, Benutzer- und Lizenzmanagement | Vollzugriff |\n| **Manager / Disponent** | Prüfaufträge planen und Ressourcen zuweisen | Kein Zugriff auf Systemeinstellungen |\n| **Techniker** | Prüfungen durchführen und dokumentieren | Nur-Lese-Zugriff auf Aufträge |\n| **Zuschauer (Viewer)** | Daten einsehen | Keine Bearbeitungsrechte |\n| **Büro-Mitarbeiter** | Terminplanung und Büroorganisation | Administrative Rechte für Büroaufgaben |\n| **Service-Mitarbeiter** | Service- und Inspektionsaufgaben | Spezifische Berechtigungen für Serviceaufgaben |\n\n---\n### References\n\n- [1] LizardDocu.md",
+    "cache_type": "query",
+    "chunk_id": null,
+    "original_prompt": "Welche Rollen gibt es im System?",
+    "queryparam": {
+      "mode": "mix",
+      "response_type": "Multiple Paragraphs",
+      "top_k": 40,
+      "chunk_top_k": 20,
+      "max_entity_tokens": 6000,
+      "max_relation_tokens": 8000,
+      "max_total_tokens": 30000,
+      "hl_keywords": "roles, system roles, user roles",
+      "ll_keywords": "",
+      "user_prompt": "",
+      "enable_rerank": true,
+      "enable_content_headings": true
+    },
+    "create_time": 1781357588,
+    "update_time": 1781357588,
+    "_id": "mix:query:c46dfaf90a45f3640fe261a5d6cbefa2"
   }
 }
