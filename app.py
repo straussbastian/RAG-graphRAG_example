@@ -371,6 +371,21 @@ def api_pipeline_graph(payload: dict = Body(...)) -> JSONResponse:
         return JSONResponse(status_code=502, content={"error": f"{type(exc).__name__}: {exc}"})
 
 
+@app.post("/api/pipeline/graphprompt")
+def api_pipeline_graphprompt(payload: dict = Body(...)) -> JSONResponse:
+    """The REAL prompt LightRAG assembles for the question (only_need_prompt) —
+    the GraphRAG counterpart to the classic RAG prompt shown in step 4."""
+    q = (payload.get("q") or "").strip()
+    mode = payload.get("mode", "mix")
+    if not q:
+        return JSONResponse(status_code=400, content={"error": "empty query"})
+    try:
+        resp = _graph_client.query_prompt(q, mode=mode)
+        return JSONResponse({"prompt": resp.get("response", ""), "mode": mode})
+    except Exception as exc:
+        return JSONResponse(status_code=502, content={"error": f"{type(exc).__name__}: {exc}"})
+
+
 # Static assets
 app.mount("/static", StaticFiles(directory=WEB_DIR), name="static")
 app.mount("/graph-static", StaticFiles(directory=GRAPH_WEB), name="graph-static")

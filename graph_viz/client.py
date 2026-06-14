@@ -43,3 +43,15 @@ class LightRAGClient:
         )
         r.raise_for_status()
         return r.json()
+
+    def query_prompt(self, query: str, mode: str = "mix") -> dict:
+        """The full prompt LightRAG assembles for the query — system role, goal,
+        instructions and the entire KG+chunk context — WITHOUT generating an
+        answer (only_need_prompt). Returned in {'response': '<prompt>'}."""
+        r = httpx.post(
+            f"{self._base}/query",
+            json={"query": query, "mode": mode, "only_need_prompt": True},
+            headers=self._headers, timeout=self._timeout,
+        )
+        r.raise_for_status()
+        return r.json()

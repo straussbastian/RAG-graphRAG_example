@@ -27,11 +27,11 @@ function drawFingerprint(canvas, vec) {
 }
 
 /* ── state ── */
-const S = { q: "", step: 0, retrieve: null, answer: null, graphdata: null, graph: null, errors: {} };
-const MAX_STEP = 7;
+const S = { q: "", step: 0, retrieve: null, answer: null, graphdata: null, graphprompt: null, graph: null, errors: {} };
+const MAX_STEP = 8;
 
 /* step n reveals: 1 question · 2 embedding · 3 vector search · 4 prompt ·
-   5 classic answer · 6 graph retrieval · 7 graph answer */
+   5 classic answer · 6 graph retrieval · 7 graph prompt · 8 graph answer */
 const REVEALS = {
   1: ["rail-top", "blk-q"],
   2: ["ar1", "blk-embed"],
@@ -39,7 +39,8 @@ const REVEALS = {
   4: ["rail-classic", "blk-prompt"],
   5: ["ar3", "blk-ans-classic"],
   6: ["rail-graph", "blk-graphretr"],
-  7: ["ar4", "blk-ans-graph"],
+  7: ["ar4", "blk-graphprompt"],
+  8: ["ar5", "blk-ans-graph"],
 };
 
 function setStatus(t) { statusEl.textContent = t; }
@@ -137,6 +138,16 @@ function renderStep(n) {
   }
 
   if (n === 7) {
+    const el = $("gprompt");
+    if (S.errors.graphprompt) { el.innerHTML = errBox(S.errors.graphprompt); return; }
+    if (!S.graphprompt) { el.innerHTML = waiting("LightRAG baut den Prompt…"); return; }
+    const p = S.graphprompt.prompt || "";
+    $("gpstats").textContent =
+      `${p.length.toLocaleString("de-DE")} Zeichen · ~${Math.round(p.length / 4000)}k Tokens`;
+    el.textContent = p;  // full prompt, scrollable; textContent avoids any HTML injection
+  }
+
+  if (n === 8) {
     $("gmode").textContent = S.graph ? `LightRAG · ${S.graph.mode}` : "LightRAG";
     const body = $("gbody");
     if (S.errors.graph) { body.innerHTML = errBox(S.errors.graph); return; }
@@ -207,16 +218,18 @@ function advance() {
   const hints = ["", "Die Frage, wie der Nutzer sie stellt.", "1024 Zahlen — die Bedeutung der Frage.",
     "Nächste Nachbarn im Vektorraum.", "Kein Zauber: Chunks werden in den Prompt geklebt.",
     "Prompt → LLM → Antwort.", "Was GraphRAG stattdessen lädt: Entitäten, Relationen, Chunks.",
+    "Der komplette Prompt, den LightRAG aus dem Graphen baut — viel größer als beim RAG.",
     "Dieselbe Frage, beantwortet über den Wissensgraphen."];
   setStatus(`Schritt ${S.step}/${MAX_STEP} · ${hints[S.step]}`);
 }
 
 function resetAll() {
-  S.q = ""; S.step = 0; S.retrieve = null; S.answer = null; S.graphdata = null; S.graph = null; S.errors = {};
+  S.q = ""; S.step = 0; S.retrieve = null; S.answer = null; S.graphdata = null; S.graphprompt = null; S.graph = null; S.errors = {};
   Object.values(REVEALS).flat().forEach((id) => { $(id).hidden = true; });
   delete $("abody").dataset.typed; delete $("gbody").dataset.typed;
   $("abody").textContent = ""; $("gbody").textContent = ""; $("prompt").textContent = "";
   $("chunks").innerHTML = ""; $("grbody").innerHTML = ""; $("gstats").textContent = "";
+  $("gprompt").textContent = ""; $("gpstats").textContent = "";
   $("next").disabled = true;
   document.querySelectorAll(".row").forEach((r) => { r.dataset.collapsed = "false"; });
   renderDots(); markActive();
@@ -246,6 +259,9 @@ async function start(q) {
   post("/api/pipeline/graphdata", { q, mode: "mix" })
     .then((d) => { S.graphdata = d; renderAll(); })
     .catch((e) => { S.errors.graphdata = `LightRAG: ${e.message}`; renderAll(); });
+  post("/api/pipeline/graphprompt", { q, mode: "mix" })
+    .then((d) => { S.graphprompt = d; renderAll(); })
+    .catch((e) => { S.errors.graphprompt = `LightRAG: ${e.message}`; renderAll(); });
 
   try {
     S.retrieve = await post("/api/pipeline/retrieve", { q, k: 4 });
