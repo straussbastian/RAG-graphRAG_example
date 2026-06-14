@@ -101,7 +101,9 @@ body {
 #blk-embed { flex: 0 0 auto; align-items: center; }
 #fp { width: min(160px, 24vh); aspect-ratio: 1 / 1; border: 1px solid var(--stroke); border-radius: 8px; background: #05070d; image-rendering: pixelated; }
 
-#blk-search { flex: 1 1 auto; }
+/* In the classic lane the search shares width with prompt+answer, like the
+   graph lane's retrieval block (was flex:1 1 auto when it lived in the top row). */
+#blk-search { flex: 1.15 1 0; min-width: 0; }
 .db-chip { font-family: var(--display); font-size: 10px; letter-spacing: 0.1em; color: var(--cyan); border: 1px solid rgba(41, 227, 255, 0.35); border-radius: 999px; padding: 2px 9px; text-transform: none; }
 .db-chip.mint { color: var(--mint); border-color: rgba(42, 242, 168, 0.35); }
 .db-chip.vio { color: var(--vio); border-color: rgba(167, 139, 250, 0.4); }
@@ -121,7 +123,7 @@ body {
 
 /* ── lanes: classic (violet) above, graph (mint) below — answers stack for
      direct comparison ── */
-.prompt-block, .graphretr-block, .grow { flex: 1.15 1 0; }
+.prompt-block, .graphretr-block { flex: 1.15 1 0; }
 .ans { flex: 1 1 0; }
 .ans.classic { border-top: 2px solid var(--vio); }
 .ans.graph { border-top: 2px solid var(--mint); }
