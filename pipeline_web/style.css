@@ -121,7 +121,7 @@ body {
 
 /* ── lanes: classic (violet) above, graph (mint) below — answers stack for
      direct comparison ── */
-.prompt-block, .graphretr-block { flex: 1.15 1 0; }
+.prompt-block, .graphretr-block, .grow { flex: 1.15 1 0; }
 .ans { flex: 1 1 0; }
 .ans.classic { border-top: 2px solid var(--vio); }
 .ans.graph { border-top: 2px solid var(--mint); }

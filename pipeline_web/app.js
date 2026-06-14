@@ -35,8 +35,8 @@ const MAX_STEP = 8;
 const REVEALS = {
   1: ["rail-top", "blk-q"],
   2: ["ar1", "blk-embed"],
-  3: ["ar2", "blk-search"],
-  4: ["rail-classic", "blk-prompt"],
+  3: ["rail-classic", "blk-search"],
+  4: ["ar2", "blk-prompt"],
   5: ["ar3", "blk-ans-classic"],
   6: ["rail-graph", "blk-graphretr"],
   7: ["ar4", "blk-graphprompt"],

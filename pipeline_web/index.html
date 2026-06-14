@@ -42,7 +42,7 @@
   <main class="flow" id="flow">
     <section class="row row-top" id="row-top">
       <button class="rail" id="rail-top" type="button" title="Ein-/ausklappen — Taste 1" hidden>
-        <span class="chev">▾</span><span class="rail-label">Frage · Suche</span>
+        <span class="chev">▾</span><span class="rail-label">Frage · Embedding</span>
       </button>
       <div class="block" id="blk-q" hidden>
         <div class="blk-label">1 · Frage</div>
@@ -54,17 +54,17 @@
         <canvas id="fp" width="352" height="352"></canvas>
         <div class="blk-sub" id="dims"></div>
       </div>
-      <div class="arrow" id="ar2" hidden>➜</div>
-      <div class="block grow" id="blk-search" hidden>
-        <div class="blk-label">3 · Vektorsuche <span class="db-chip" id="coll"></span></div>
-        <div class="chunks" id="chunks"></div>
-      </div>
     </section>
 
     <section class="row lane lane-classic" id="row-classic">
       <button class="rail" id="rail-classic" type="button" title="Ein-/ausklappen — Taste 2" hidden>
         <span class="chev">▾</span><span class="rail-label">Klassisch</span>
       </button>
+      <div class="block grow" id="blk-search" hidden>
+        <div class="blk-label">3 · Vektorsuche <span class="db-chip" id="coll"></span></div>
+        <div class="chunks" id="chunks"></div>
+      </div>
+      <div class="arrow" id="ar2" hidden>➜</div>
       <div class="block prompt-block" id="blk-prompt" hidden>
         <div class="blk-label">4 · Prompt — Chunks + Frage, zusammengeklebt</div>
         <div class="prompt" id="prompt"></div>
