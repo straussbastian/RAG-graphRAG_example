@@ -9,6 +9,7 @@ const PALETTE = ["#22d3ee", "#fb7185", "#fde047", "#a78bfa", "#34d399",
 const plotDiv = document.getElementById("plot");
 const statusEl = document.getElementById("status");
 const hintEl = document.getElementById("hint");
+const isLight = () => document.documentElement.dataset.theme === "light";
 let POINTS = [];
 let idIndex = {};
 
@@ -134,7 +135,7 @@ function render(queryPoint, neighbors) {
   };
 
   const lines = { type: "scatter3d", mode: "lines", hoverinfo: "skip",
-    x: [], y: [], z: [], line: { color: "#7fe9ff", width: 2.5 }, opacity: 0.85 };
+    x: [], y: [], z: [], line: { color: isLight() ? "#0e7490" : "#7fe9ff", width: 2.5 }, opacity: 0.85 };
   nbPoints.forEach(p => {
     lines.x.push(queryPoint[0], p.umap[0], null);
     lines.y.push(queryPoint[1], p.umap[1], null);
@@ -147,8 +148,8 @@ function render(queryPoint, neighbors) {
   const qtrace = { type: "scatter3d", mode: "markers+text", hoverinfo: "skip",
     x: [queryPoint[0]], y: [queryPoint[1]], z: [queryPoint[2]],
     text: ["✦ Query"], textposition: "top center",
-    textfont: { color: "#fff", family: "Chakra Petch, monospace", size: 13 },
-    marker: { size: 11, color: "#ffffff", symbol: "diamond", line: { color: "#a78bfa", width: 2 } } };
+    textfont: { color: isLight() ? "#16213b" : "#fff", family: "Chakra Petch, monospace", size: 13 },
+    marker: { size: 11, color: isLight() ? "#7c5cff" : "#ffffff", symbol: "diamond", line: { color: "#a78bfa", width: 2 } } };
 
   Plotly.react(plotDiv, [bgTrace, nbHalo, lines, nbTrace, qHalo, qtrace], layout, CONFIG);
 }

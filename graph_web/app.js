@@ -13,6 +13,8 @@ const PALETTE = {
   event: "#f472b6", other: "#94a3b8", UNKNOWN: "#64748b",
 };
 const colorOf = (t) => PALETTE[t] || "#9fb0d0";
+const isLight = () => document.documentElement.dataset.theme === "light";
+const themeBg = () => (isLight() ? "#eef1f7" : "#04050a");
 
 const statusEl = document.getElementById("status");
 const kwEl = document.getElementById("keywords");
@@ -77,14 +79,17 @@ function nodeStateOf(n) {
 }
 
 function styleGlowNodes() {
+  // additive glow blows out to white on a light background → keep it faint there
+  const gf = isLight() ? 0.16 : 1;
+  const dimCore = isLight() ? 0.4 : 0.22;
   glowObjects.forEach((o, id) => {
     const n = nodeById[id];
     const st = nodeStateOf(n);
     o.group.visible = st !== "hidden";
     if (st === "hidden") return;
-    if (st === "hot") { o.core.material.opacity = 1; o.glow.material.opacity = 1; o.glow.scale.setScalar(o.base * 9); }
-    else if (st === "dim") { o.core.material.opacity = 0.22; o.glow.material.opacity = 0.05; o.glow.scale.setScalar(o.base * 4); }
-    else { o.core.material.opacity = 1; o.glow.material.opacity = 0.85; o.glow.scale.setScalar(o.base * 6); }
+    if (st === "hot") { o.core.material.opacity = 1; o.glow.material.opacity = 1 * gf; o.glow.scale.setScalar(o.base * 9); }
+    else if (st === "dim") { o.core.material.opacity = dimCore; o.glow.material.opacity = 0.05 * gf; o.glow.scale.setScalar(o.base * 4); }
+    else { o.core.material.opacity = 1; o.glow.material.opacity = 0.85 * gf; o.glow.scale.setScalar(o.base * 6); }
   });
 }
 
@@ -98,8 +103,10 @@ function fallbackNodeColor(n) {
 
 /* ── links ────────────────────────────────────────────────────────────────── */
 function linkColor(l) {
-  if (hlEdges.size === 0) return "rgba(150,190,245,0.42)";
-  return isHotLink(l) ? "rgba(175,230,255,0.6)" : "rgba(120,150,210,0.05)";
+  const light = isLight();
+  if (hlEdges.size === 0) return light ? "rgba(70,95,140,0.5)" : "rgba(150,190,245,0.42)";
+  if (isHotLink(l)) return light ? "rgba(15,80,150,0.8)" : "rgba(175,230,255,0.6)";
+  return light ? "rgba(70,95,140,0.08)" : "rgba(120,150,210,0.05)";
 }
 const linkWidth = (l) => (isHotLink(l) ? 1.2 : 1.1);
 const linkParticles = (l) => (isHotLink(l) ? 4 : 0);
@@ -201,7 +208,7 @@ async function init() {
   DATA.nodes.forEach((n) => { nodeById[n.id] = n; });
 
   GRAPH = ForceGraph3D()(document.getElementById("graph"))
-    .backgroundColor("#04050a")
+    .backgroundColor(themeBg())
     .graphData(DATA)
     .nodeRelSize(2.4)
     .nodeVal((n) => 1 + n.degree)
@@ -287,6 +294,11 @@ document.getElementById("reset").addEventListener("click", () => {
   refresh();
   const ctr = GRAPH.controls(); if (ctr && !userTookOver) ctr.autoRotate = true;
   GRAPH.zoomToFit(900, 70);
+});
+
+// live theme switch from the shell: repaint background + restyle links/nodes
+window.addEventListener("ragthemechange", () => {
+  if (GRAPH) { GRAPH.backgroundColor(themeBg()); refresh(); }
 });
 
 init();

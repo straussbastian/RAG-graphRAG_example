@@ -3,6 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+  (function(){var d=document.documentElement;
+   function apply(t){d.dataset.theme=(t==="light"?"light":"dark");}
+   try{apply(localStorage.getItem("ragTheme")||"dark");}catch(e){}
+   addEventListener("message",function(e){if(e.data&&e.data.type==="ragTheme"){
+     try{localStorage.setItem("ragTheme",e.data.theme);}catch(_){}
+     apply(e.data.theme);dispatchEvent(new CustomEvent("ragthemechange",{detail:e.data.theme}));}});})();
+  </script>
   <title>Pipeline · Klassisches RAG live</title>
   <link rel="preload" as="font" type="font/woff2" href="/graph-static/fonts/ChakraPetch-700.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/graph-static/fonts/Sora-400.woff2" crossorigin />

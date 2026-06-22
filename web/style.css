@@ -19,6 +19,16 @@
   --body: "Sora", system-ui, sans-serif;
 }
 
+/* ── Light theme (Toggle oben rechts in der Shell) ─────────────────────────── */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg-0: #e7ecf5; --bg-1: #ffffff;
+  --ink: #16213b; --muted: #55617d;
+  --stroke: rgba(28, 52, 102, 0.18);
+  --glass: rgba(255, 255, 255, 0.72); --glass-strong: rgba(255, 255, 255, 0.9);
+}
+[data-theme="light"] .hud-top { background: linear-gradient(180deg, rgba(247, 249, 253, 0.9), rgba(247, 249, 253, 0)); }
+
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body {

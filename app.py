@@ -110,6 +110,7 @@ except Exception as exc:  # surfaced at /api/graph/query, not at import
 _SHELL = """<!doctype html><html lang="de"><head><meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>RAG &times; GraphRAG</title>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('ragTheme')||'dark';}catch(e){}</script>
 <style>
 @font-face{font-family:'Chakra Petch';src:url('/graph-static/fonts/ChakraPetch-700.woff2') format('woff2');font-weight:700;font-display:swap}
 @font-face{font-family:'Sora';src:url('/graph-static/fonts/Sora-400.woff2') format('woff2');font-weight:400;font-display:swap}
@@ -134,6 +135,22 @@ body{margin:0;height:100vh;display:flex;flex-direction:column;color:#eaf0ff;
 .seg button#b-chunk.active{background:linear-gradient(135deg,#a3e635,#34d399);box-shadow:0 0 22px -6px #a3e635}
 .seg button#b-pipe.active{background:linear-gradient(135deg,#e879f9,#a78bfa);box-shadow:0 0 22px -6px #e879f9}
 iframe{flex:1;border:0;width:100%;background:#04050a}
+.themesw{position:absolute;right:20px;display:flex;gap:2px;background:rgba(12,17,30,.7);
+ border:1px solid rgba(140,175,255,.16);border-radius:999px;padding:3px}
+.themesw button{border:0;background:transparent;cursor:pointer;font-size:13px;line-height:1;
+ padding:5px 9px;border-radius:999px;opacity:.55;filter:grayscale(.4);transition:opacity .2s,background .2s}
+.themesw button.on{opacity:1;filter:none;background:rgba(140,175,255,.16)}
+/* ── Light theme ─────────────────────────────────────────────────────────── */
+html[data-theme="light"] body{color:#16213b;
+ background:radial-gradient(900px 500px at 50% -10%,rgba(41,227,255,.07),transparent 60%),linear-gradient(160deg,#ffffff,#e7ecf5)}
+html[data-theme="light"] .bar{background:rgba(247,249,253,.85);border-bottom-color:rgba(28,52,102,.14)}
+html[data-theme="light"] .bar .title{color:#55617d}
+html[data-theme="light"] .seg{background:rgba(255,255,255,.72);border-color:rgba(28,52,102,.16)}
+html[data-theme="light"] .seg button{color:#55617d}
+html[data-theme="light"] .seg button:hover{color:#16213b}
+html[data-theme="light"] iframe{background:#ffffff}
+html[data-theme="light"] .themesw{background:rgba(255,255,255,.72);border-color:rgba(28,52,102,.16)}
+html[data-theme="light"] .themesw button.on{background:rgba(28,52,102,.12)}
 </style></head><body>
 <div class="bar">
   <div class="title">RAG &times; GraphRAG</div>
@@ -144,12 +161,29 @@ iframe{flex:1;border:0;width:100%;background:#04050a}
     <button id="b-graph" onclick="show('/graph','b-graph')">GraphRAG</button>
     <button id="b-pipe" onclick="show('/pipeline','b-pipe')">Pipeline</button>
   </div>
+  <div class="themesw" id="themesw" title="Hell / Dunkel umschalten">
+    <button type="button" data-t="dark" onclick="setTheme('dark')">&#127769;</button>
+    <button type="button" data-t="light" onclick="setTheme('light')">&#9728;</button>
+  </div>
 </div>
 <iframe id="view" src="/chunk" title="Ansicht"></iframe>
 <script>
 function show(u,id){document.getElementById('view').src=u;
   document.querySelectorAll('.seg button').forEach(function(b){b.classList.remove('active');});
   document.getElementById(id).classList.add('active');}
+function setTheme(t){
+  document.documentElement.dataset.theme=t;
+  try{localStorage.setItem('ragTheme',t);}catch(e){}
+  var sw=document.getElementById('themesw');
+  if(sw)sw.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.t===t);});
+  var f=document.getElementById('view');
+  if(f&&f.contentWindow){try{f.contentWindow.postMessage({type:'ragTheme',theme:t},'*');}catch(e){}}
+}
+(function(){var t='dark';try{t=localStorage.getItem('ragTheme')||'dark';}catch(e){}setTheme(t);})();
+document.getElementById('view').addEventListener('load',function(){
+  var t='dark';try{t=localStorage.getItem('ragTheme')||'dark';}catch(e){}
+  try{this.contentWindow.postMessage({type:'ragTheme',theme:t},'*');}catch(e){}
+});
 </script></body></html>"""
 
 
